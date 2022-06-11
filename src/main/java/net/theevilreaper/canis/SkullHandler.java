@@ -6,7 +6,6 @@ import net.minestom.server.tag.Tag;
 import net.minestom.server.utils.NamespaceID;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -20,13 +19,10 @@ public class SkullHandler implements BlockHandler {
 
     private static final NamespaceID namespaceID = NamespaceID.from(Key.key("minecraft:skull"));
 
-    private static final List<Tag<?>> TAG_LIST;
-
-    static {
-        TAG_LIST = new ArrayList<>();
-        TAG_LIST.add(Tag.String("ExtraType"));
-        TAG_LIST.add(Tag.NBT("SkullOwner"));
-    }
+    private static final List<Tag<?>> TAG_LIST = List.of(
+            Tag.String("ExtraType"),
+            Tag.NBT("SkullOwner")
+    );
 
     /**
      * Returns all tags which are needed for the block.
