@@ -13,7 +13,6 @@ java {
 
 repositories {
     mavenCentral()
-    mavenLocal()
     maven("https://jitpack.io")
 }
 
@@ -21,6 +20,7 @@ val minestomVersion = "master-SNAPSHOT"
 
 dependencies {
     compileOnly("com.github.Minestom:Minestom:$minestomVersion")
+    compileOnly("org.jetbrains:annotations:23.0.0")
 }
 
 publishing {
