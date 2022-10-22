@@ -19,8 +19,11 @@ repositories {
 val minestomVersion = "master-SNAPSHOT"
 
 dependencies {
-    compileOnly("com.github.Minestom:Minestom:$minestomVersion")
-    compileOnly("org.jetbrains:annotations:23.0.0")
+    compileOnly(libs.minestom)
+
+    testImplementation(libs.minestom)
+    testImplementation(libs.junitApi)
+    testRuntimeOnly(libs.junitEngine)
 }
 
 publishing {
@@ -41,5 +44,13 @@ tasks {
 
     compileJava {
         options.encoding = "UTF-8"
+        options.release.set(17)
+    }
+
+    test {
+        useJUnitPlatform()
+        testLogging {
+            events("passed", "skipped", "failed")
+        }
     }
 }
