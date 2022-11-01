@@ -1,0 +1,18 @@
+metadata.format.version = "1.1"
+
+[versions]
+
+# Testing
+junit = "5.9.0"
+
+# Minestom
+minestom = "master-SNAPSHOT"
+
+[libraries]
+
+# Minestom
+minestom = { group = "com.github.Minestom", name = "Minestom", version.ref = "minestom"}
+
+# Testing
+junitApi = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit" }
+junitEngine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit" }
