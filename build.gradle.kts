@@ -16,8 +16,6 @@ repositories {
     maven("https://jitpack.io")
 }
 
-val minestomVersion = "master-SNAPSHOT"
-
 dependencies {
     compileOnly(libs.minestom)
 
