@@ -3,6 +3,12 @@ package net.theevilreaper.canis.util;
 import net.minestom.server.instance.block.BlockFace;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * The enum represents all valid facing which a door can have.
+ * @author theEvilReaper
+ * @version 1.0.0
+ * @since 1.0.0
+ */
 public enum DoorFacing {
 
     EAST,
