@@ -3,7 +3,7 @@ metadata.format.version = "1.1"
 [versions]
 
 # Testing
-junit = "5.9.3"
+junit = "5.10.0"
 
 # Minestom
 minestom = "master-SNAPSHOT"
