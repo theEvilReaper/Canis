@@ -21,10 +21,11 @@ public enum SignType {
     CRIMSON(Block.CRIMSON_SIGN, Block.CRIMSON_WALL_SIGN, Block.CRIMSON_HANGING_SIGN),
     WARPED(Block.WARPED_SIGN, Block.WARPED_WALL_SIGN, Block.WARPED_HANGING_SIGN);
     private final Block standingSign;
-    private final Block hangingSign;
     private final Block wallSign;
+    private final Block hangingSign;
 
-    SignType(@NotNull Block standingSign, @NotNull Block hangingSign, @NotNull Block wallSign) {
+
+    SignType(@NotNull Block standingSign, @NotNull Block wallSign, @NotNull Block hangingSign) {
         this.standingSign = standingSign;
         this.hangingSign = hangingSign;
         this.wallSign = wallSign;
