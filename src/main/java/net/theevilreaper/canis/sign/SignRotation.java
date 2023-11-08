@@ -47,7 +47,7 @@ public enum SignRotation {
             if (!values[i].name().equals(face)) continue;
             result = values[i];
         }
-        return null;
+        return result;
     }
 
     public static @Nullable SignRotation getRotation(int index) {
@@ -59,7 +59,7 @@ public enum SignRotation {
     }
 
     public @NotNull SignRotation oppositeBlockFacing() {
-        return BLOCK_FACING[(ordinal() + BLOCK_FACING.length / 2) % BLOCK_FACING.length];
+        return BLOCK_FACING[(ordinal() + BLOCK_FACING.length) % BLOCK_FACING.length];
     }
 
     public @NotNull SignRotation rotateClockwise() {
@@ -67,13 +67,7 @@ public enum SignRotation {
     }
 
     public @NotNull SignRotation rotateCounterClockwise() {
-        return VALUES[(ordinal() - 1) % VALUES.length];
-    }
-
-    public static void printOrdinalValue() {
-        System.out.println("For block facing");
-        for (SignRotation rotation : BLOCK_FACING) {
-            System.out.println(rotation.ordinal());
-        }
+        var newIndex = ordinal() == 0 ? VALUES.length - 1 : ordinal() - 1;
+        return VALUES[newIndex];
     }
 }
