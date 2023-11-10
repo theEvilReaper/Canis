@@ -29,6 +29,21 @@ class SignRotationTest {
         );
     }
 
+    private static @NotNull Stream<Arguments> oppositeBlockFacing() {
+        return Stream.of(
+                Arguments.of(SignRotation.SOUTH, SignRotation.NORTH.oppositeBlockFacing()),
+                Arguments.of(SignRotation.WEST, SignRotation.EAST.oppositeBlockFacing()),
+                Arguments.of(SignRotation.EAST, SignRotation.WEST.oppositeBlockFacing()),
+                Arguments.of(SignRotation.NORTH, SignRotation.SOUTH.oppositeBlockFacing())
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("oppositeBlockFacing")
+    void testOppositeBlockFacing(@NotNull SignRotation expected, @NotNull SignRotation rotation) {
+        assertEquals(expected, rotation);
+    }
+
     @ParameterizedTest
     @MethodSource("provideRotation")
     void testGetRotation(@NotNull String face, @NotNull SignRotation expected) {
@@ -52,5 +67,11 @@ class SignRotationTest {
         assertEquals(SignRotation.NORTH, SignRotation.getRotation(8));
         assertEquals(SignRotation.WEST, SignRotation.getRotation(4));
         assertNull(SignRotation.getRotation(16));
+    }
+
+    @Test
+    void testInvalidOppositeBlockFacing() {
+        var exception = assertThrows(IllegalArgumentException.class, SignRotation.WEST_SOUTH_WEST::oppositeBlockFacing);
+        assertEquals("Cannot get the opposite block facing of a diagonal facing", exception.getMessage());
     }
 }
