@@ -1,9 +1,18 @@
 package net.theevilreaper.canis.sign;
 
+import net.minestom.server.utils.validate.Check;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 /**
+ * The protocol from the game defines each possible rotation state which a sign can be potentially have.
+ * But the game has three different types of signs which can have all possible rotations or only a few.
+ * Depends on the type of the sign some methods should be used carefully to prevent errors during the runtime.
+ * <ul>
+ *     <li>STANDING_SIGN has all rotation states from the enum</li>
+ *     <li>WALL_SIGN has only the rotation states from the enum which are not diagonal</li>
+ *     <li>HANGING_SIGN has all rotation states from the enum</li>
+ * </ul>
  * @author theEvilReaper
  * @version 1.0.0
  * @since 1.0.0
@@ -28,6 +37,8 @@ public enum SignRotation {
     SOUTH_SOUTH_EAST;
 
     private static final SignRotation[] VALUES = values();
+
+    // Stores only the facing types which are not diagonal
     private static final SignRotation[] BLOCK_FACING = new SignRotation[]{
             SOUTH,
             WEST,
@@ -41,15 +52,6 @@ public enum SignRotation {
         return hasUnderScore ? findFace(upperCasedFace, VALUES) : findFace(upperCasedFace, BLOCK_FACING);
     }
 
-    private static @Nullable SignRotation findFace(@NotNull String face, @NotNull SignRotation... values) {
-        SignRotation result = null;
-        for (int i = 0; i < values.length && result == null; i++) {
-            if (!values[i].name().equals(face)) continue;
-            result = values[i];
-        }
-        return result;
-    }
-
     public static @Nullable SignRotation getRotation(int index) {
         return index < 0 || index >= VALUES.length ? null : VALUES[index];
     }
@@ -59,7 +61,8 @@ public enum SignRotation {
     }
 
     public @NotNull SignRotation oppositeBlockFacing() {
-        return BLOCK_FACING[(ordinal() + BLOCK_FACING.length) % BLOCK_FACING.length];
+        Check.argCondition(ordinal() % BLOCK_FACING.length != 0, "Cannot get the opposite block facing of a diagonal facing");
+        return VALUES[(ordinal() + BLOCK_FACING.length * 2) % VALUES.length];
     }
 
     public @NotNull SignRotation rotateClockwise() {
@@ -69,5 +72,14 @@ public enum SignRotation {
     public @NotNull SignRotation rotateCounterClockwise() {
         var newIndex = ordinal() == 0 ? VALUES.length - 1 : ordinal() - 1;
         return VALUES[newIndex];
+    }
+
+    private static @Nullable SignRotation findFace(@NotNull String face, @NotNull SignRotation... values) {
+        SignRotation result = null;
+        for (int i = 0; i < values.length && result == null; i++) {
+            if (!values[i].name().equals(face)) continue;
+            result = values[i];
+        }
+        return result;
     }
 }
