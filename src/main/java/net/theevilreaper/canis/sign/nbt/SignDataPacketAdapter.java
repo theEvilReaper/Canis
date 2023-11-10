@@ -14,8 +14,8 @@ import org.jglrxavpok.hephaistos.nbt.NBTType;
 import java.util.Locale;
 
 /**
- * The interface contains some method which are used to construct the nbt structure of a sign.
- * That is very important because otherwise the player can't the text on the sign or the changed color of it.
+ * The interface contains some methods which are used to construct the nbt structure of a sign.
+ * That is very important because otherwise the player can't change the text on the sign or the color of it.
  * @author theEvilReaper
  * @version 1.0.0
  * @since 1.0.0
