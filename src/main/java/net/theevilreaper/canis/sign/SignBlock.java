@@ -1,53 +1,64 @@
 package net.theevilreaper.canis.sign;
 
-import net.kyori.adventure.text.Component;
 import net.minestom.server.instance.block.Block;
+import net.theevilreaper.canis.sign.nbt.SignDataPacketAdapter;
+import net.theevilreaper.canis.sign.side.SignSide;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author theEvilReaper
  * @version 1.0.0
  * @since 1.0.0
  **/
-public class SignBlock implements Sign {
+public abstract class SignBlock implements Sign, SignDataPacketAdapter {
 
     protected Block block;
+    protected SignText frontSide;
+    protected SignText backSide;
+    private final boolean isWallSign;
+    protected final int blockEntityId;
 
     SignBlock(@NotNull Block block) {
         this.block = block;
+        this.isWallSign = block.name().endsWith("wall_sign");
+        this.frontSide = new SignText();
+        this.backSide = isWallSign ? null : new SignText();
+        this.blockEntityId = block.registry().blockEntityId();
     }
 
-    public boolean isWaterlogged() {
+    @Override
+    public boolean isWaterLogged() {
         var propertyState = block.getProperty(WATER_LOGGED);
         return "true".equals(propertyState);
     }
 
     @Override
     public void updateRotation(@NotNull SignRotation rotation) {
-        block = block.withProperty(FACING, String.valueOf(rotation.ordinal()));
+        var newState = isWallSign ? rotation.name().toLowerCase() : String.valueOf(rotation.ordinal());
+        block = block.withProperty(isWallSign ? FACING : "rotation", newState);
     }
 
     @Override
-    public void setLine(int index, @NotNull Component component) {
-        if (index < 0 || index >= MAX_SIGN_LINES) {
-            throw new IndexOutOfBoundsException("Please provide a line index between 0 and " + MAX_SIGN_LINES);
+    public void clearLines(@NotNull SignSide side) {
+        switch (side) {
+            case FRONT -> {
+                frontSide = new SignText();
+            }
+            case BACK -> {
+                if (!isWallSign) {
+                    backSide = new SignText();
+                }
+            }
         }
+        this.updateLines(side);
     }
 
     @Override
-    public void clearLines() {
-    }
-
-    @Override
-    public @NotNull Component getLine(int index) throws IndexOutOfBoundsException {
-        if (index < 0 || index >= MAX_SIGN_LINES) {
-            throw new IndexOutOfBoundsException("Please provide a line index between 0 and " + MAX_SIGN_LINES);
-        }
-        return null;
-    }
-
-    @Override
-    public @NotNull Component[] getLines() {
-        return new Component[0];
+    public @Nullable SignText getSignText(@NotNull SignSide side) {
+        return switch (side) {
+            case FRONT -> frontSide;
+            case BACK -> backSide;
+        };
     }
 }

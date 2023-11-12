@@ -1,28 +1,26 @@
 package net.theevilreaper.canis.sign;
 
-import net.kyori.adventure.text.Component;
+import net.theevilreaper.canis.sign.side.SignSide;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * @author theEvilReaper
  * @version 1.0.0
- * @since
+ * @since 1.0.0
  **/
-
 public interface Sign {
 
     String WATER_LOGGED = "waterlogged";
     String FACING = "facing";
 
-    int MAX_SIGN_LINES = 4;
-
     void updateRotation(@NotNull SignRotation rotation);
 
-    void setLine(int index, @NotNull Component component) throws IndexOutOfBoundsException;
+    void clearLines(@NotNull SignSide side);
 
-    void clearLines();
+    @Nullable SignText getSignText(@NotNull SignSide side);
 
-    @NotNull Component getLine(int index) throws IndexOutOfBoundsException;
+    void updateLines(@NotNull SignSide side);
 
-    @NotNull Component[] getLines();
+    boolean isWaterLogged();
 }
