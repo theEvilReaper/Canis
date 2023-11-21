@@ -30,29 +30,57 @@ public final class SignText {
         this.dyeColor = DyeColor.BLACK;
     }
 
+    /**
+     * Creates a new instance from the class with the given data values.
+     * @param messages the message array which contains the line data
+     * @param dyeColor the color to display
+     * @param glowing the indicator if the text is glowing or not
+     */
     public SignText(@NotNull Component[] messages, @NotNull DyeColor dyeColor, boolean glowing) {
         this.messages = messages;
         this.dyeColor = dyeColor;
         this.glowingText = glowing;
     }
 
+    /**
+     * Set a new {@link Component} reference at a specific index.
+     * @param line the line which should be updated
+     * @param component the text reference to set
+     * @throws ArrayIndexOutOfBoundsException when the index is not valid
+     */
     public void setMessage(int line, @NotNull Component component) throws ArrayIndexOutOfBoundsException {
         if (line < 0 || line >= MAX_LINE_COUNT) throw new ArrayIndexOutOfBoundsException("The line must be between 0 and " + MAX_LINE_COUNT);
         this.messages[line] = component;
     }
 
+    /**
+     * Set if the text should have a glowing effect or not.
+     * @param hasGlowingText true for glowing otherwise false
+     */
     public void setGlowingText(boolean hasGlowingText) {
         this.glowingText = hasGlowingText;
     }
 
+    /**
+     * Returns if the text is glowing or not.
+     * @return true when the next is glowing otherwise false
+     */
     public boolean hasGlowingText() {
         return glowingText;
     }
 
+    /**
+     * Returns the current color for the text as {@link DyeColor}.
+     * @return the underlying color value
+     */
     public @NotNull DyeColor getDyeColor() {
         return dyeColor;
     }
 
+    /**
+     * Returns the array which holds the message references for the side.
+     * @return the underlying array reference
+     */
     public @NotNull Component[] getMessages() {
         return messages;
     }
