@@ -20,8 +20,9 @@ dependencies {
     compileOnly(libs.minestom)
 
     testImplementation(libs.minestom)
-    testImplementation(libs.junitApi)
-    testRuntimeOnly(libs.junitEngine)
+    testImplementation(libs.minestom.test)
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.jupiter.engine)
 }
 
 publishing {
