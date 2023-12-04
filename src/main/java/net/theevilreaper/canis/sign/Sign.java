@@ -13,7 +13,6 @@ import org.jetbrains.annotations.Nullable;
  **/
 public interface Sign extends TagReadable {
 
-
     String WATER_LOGGED = "waterlogged";
     String FACING = "facing";
 
