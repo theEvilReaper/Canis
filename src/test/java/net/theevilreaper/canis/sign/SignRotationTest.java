@@ -70,6 +70,11 @@ class SignRotationTest {
     }
 
     @Test
+    void testOpposite() {
+        assertEquals(SignRotation.WEST.opposite(), SignRotation.EAST);
+    }
+
+    @Test
     void testInvalidOppositeBlockFacing() {
         var exception = assertThrows(IllegalArgumentException.class, SignRotation.WEST_SOUTH_WEST::oppositeBlockFacing);
         assertEquals("Cannot get the opposite block facing of a diagonal facing", exception.getMessage());
