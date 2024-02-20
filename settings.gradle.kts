@@ -3,7 +3,7 @@ rootProject.name = "Canis"
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("microtus", "1.1.1")
+            version("microtus", "1.3.1")
             version("junit", "5.10.2")
             library("minestom", "net.onelitefeather.microtus", "Minestom").versionRef("microtus")
             library("minestom-test", "net.onelitefeather.microtus.testing", "testing").version("microtus")
