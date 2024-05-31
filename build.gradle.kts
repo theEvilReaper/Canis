@@ -7,8 +7,9 @@ group = "net.theevilreaper.canis"
 version = "1.0.0-SNAPSHOT"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(21))
+    }
 }
 
 repositories {
@@ -18,7 +19,6 @@ repositories {
 
 dependencies {
     compileOnly(libs.minestom)
-
     testImplementation(libs.minestom)
     testImplementation(libs.minestom.test)
     testImplementation(libs.junit.jupiter)
@@ -43,7 +43,7 @@ tasks {
 
     compileJava {
         options.encoding = "UTF-8"
-        options.release.set(17)
+        options.release.set(21)
     }
 
     test {
