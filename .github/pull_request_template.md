@@ -26,7 +26,7 @@ SOFTWARE.
 
 When creating a pull request, it is essential to provide a clear and concise description of the changes being proposed.
 This description serves as a communication tool to inform the maintainers about the intended modifications. If the pull
-request addresses a bug or resolves a feature request, it is important to link to the corresponding issue for context.
+request addresses a bug or or implements a feature request, it is important to link to the corresponding issue for context.
 Additionally, the description should outline the rationale behind the changes, any relevant implementation details, and
 potential impacts on existing functionality. By including this information, you facilitate a smoother review process and
 help maintainers understand the significance of the proposed changes.
