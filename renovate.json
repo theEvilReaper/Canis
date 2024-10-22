@@ -14,7 +14,6 @@
       "automerge": true,
       "automergeType": "branch",
       "groupName": "patch",
-
       "schedule": [
         "after 10pm and before 6:00am every day"
       ],
