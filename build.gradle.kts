@@ -15,6 +15,7 @@ java {
 }
 
 repositories {
+    maven("https://s01.oss.sonatype.org/content/repositories/snapshots/")
     mavenCentral()
 }
 
@@ -30,7 +31,7 @@ publishing {
     publications {
         create<MavenPublication>("maven") {
             from(components.findByName("java"))
-            groupId = "net.theevilreaper"
+            groupId = project.group.toString()
             artifactId = project.name
             version = project.version.toString()
             pom {
