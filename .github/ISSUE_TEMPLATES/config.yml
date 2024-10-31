@@ -1,0 +1,6 @@
+blank_issues_enabled: false
+contact_links:
+  - name: General discussions for Canis
+    url: https://github.com/theEvilReaper/Canis/discussions
+    about: If you have any questions or problems, please use the discussions section
+    emoji: ❓
