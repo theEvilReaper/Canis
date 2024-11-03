@@ -6,7 +6,7 @@ dependencyResolutionManagement {
             version("microtus", "1.5.0")
             version("junit", "5.11.3")
             library("minestom", "net.onelitefeather.microtus", "Microtus").versionRef("microtus")
-            library("minestom-test", "net.onelitefeather.microtus.testing", "testing").version("microtus")
+            library("minestom-test", "net.onelitefeather.microtus.testing", "testing").versionRef("microtus")
             library("junit-jupiter", "org.junit.jupiter", "junit-jupiter").versionRef("junit")
             library("junit-jupiter-engine", "org.junit.jupiter", "junit-jupiter-engine").versionRef("junit")
         }
