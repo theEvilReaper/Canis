@@ -20,8 +20,9 @@ public class SkullHandler implements BlockHandler {
     private static final NamespaceID namespaceID = NamespaceID.from(Key.key("minecraft:skull"));
 
     private static final List<Tag<?>> TAG_LIST = List.of(
-            Tag.String("ExtraType"),
-            Tag.NBT("SkullOwner")
+            Tag.String("custom_name"),
+            Tag.String("note_block_sound"),
+            Tag.NBT("profile")
     );
 
     /**
