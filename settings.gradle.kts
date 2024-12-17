@@ -4,7 +4,7 @@ dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
             version("microtus", "1.5.0")
-            version("junit", "5.11.3")
+            version("junit", "5.11.4")
             library("minestom", "net.onelitefeather.microtus", "Microtus").versionRef("microtus")
             library("minestom-test", "net.onelitefeather.microtus.testing", "testing").versionRef("microtus")
             library("junit-jupiter", "org.junit.jupiter", "junit-jupiter").versionRef("junit")
