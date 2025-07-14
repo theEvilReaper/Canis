@@ -3,10 +3,11 @@ rootProject.name = "Canis"
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("microtus", "1.5.1")
+            version("minestom", "2025.07.04-1.21.5")
             version("junit", "5.13.3")
-            library("minestom", "net.onelitefeather.microtus", "Microtus").versionRef("microtus")
-            library("minestom-test", "net.onelitefeather.microtus.testing", "testing").versionRef("microtus")
+
+            library("minestom","net.minestom", "minestom").versionRef("minestom")
+            library("minestom-test", "net.minestom", "testing").version("minestom")
             library("junit-jupiter", "org.junit.jupiter", "junit-jupiter").versionRef("junit")
             library("junit-jupiter-engine", "org.junit.jupiter", "junit-jupiter-engine").versionRef("junit")
         }
