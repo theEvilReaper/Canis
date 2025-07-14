@@ -6,7 +6,6 @@ import net.minestom.server.tag.Tag;
 import net.minestom.server.tag.TagReadable;
 import net.minestom.server.tag.TagSerializer;
 import net.minestom.server.tag.TagWritable;
-import net.minestom.server.utils.NamespaceID;
 import net.theevilreaper.canis.banner.BannerPattern;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -16,13 +15,14 @@ import java.util.List;
 
 /**
  * Implementation of a {@link BlockHandler} which reads the nbt tags for a banner.
+ *
  * @author theEvilReaper
- * @version 1.0.0
+ * @version 1.1.0
  * @since 1.0.0
  **/
 public class BannerHandler implements BlockHandler {
 
-    private static final NamespaceID namespaceID = NamespaceID.from(Key.key("minecraft:banner"));
+    private static final Key BANNER_KEY = Key.key("minecraft:banner");
 
     /**
      * Custom implementation of a {@link TagSerializer} which reads the Patterns tag from a banner.
@@ -49,6 +49,7 @@ public class BannerHandler implements BlockHandler {
 
     /**
      * Returns all tags which are needed for the block.
+     *
      * @return the list with the tags
      */
     @Override
@@ -56,12 +57,8 @@ public class BannerHandler implements BlockHandler {
         return TAG_LIST;
     }
 
-    /**
-     * Returns the {@link NamespaceID} for the block.
-     * @return the given namespace
-     */
     @Override
-    public @NotNull NamespaceID getNamespaceId() {
-        return namespaceID;
+    public @NotNull Key getKey() {
+        return BANNER_KEY;
     }
 }

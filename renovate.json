@@ -1,25 +1,24 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
-    ":semanticCommitsDisabled"
+    "config:recommended"
   ],
-  "baseBranches": [
-    "develop"
+  "labels": [
+    "renovate"
   ],
-  "labels": ["Renovate"],
-  "rebaseWhen": "conflicted",
   "packageRules": [
     {
-      "matchUpdateTypes": [
-        "patch"
-      ],
+      "matchPackageNames": ["net.minestom:minestom"],
+      "versioning": "regex:^(?<major>\\d{4})\\.(?<minor>\\d{2})\\.(?<patch>\\d{2})(?<prerelease>[a-zA-Z]?)-(?<build>[A-Za-z0-9._]+)$"
+    },
+    {
+      "matchUpdateTypes": ["major", "minor", "patch"],
       "automerge": true
     }
   ],
   "vulnerabilityAlerts": {
     "labels": [
-      "Component::security"
+      "security"
     ],
     "automerge": true
   }

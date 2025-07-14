@@ -1,8 +1,8 @@
 package net.theevilreaper.canis;
 
+import net.kyori.adventure.key.Key;
 import net.minestom.server.instance.block.BlockHandler;
 import net.minestom.server.tag.Tag;
-import net.minestom.server.utils.NamespaceID;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
@@ -10,13 +10,14 @@ import java.util.List;
 
 /**
  * Implementation of a {@link BlockHandler} which reads the nbt tags for a sign.
+ *
  * @author theEvilReaper
- * @version 1.0.0
+ * @version 1.1.0
  * @since 1.0.0
  **/
 public class SignHandler implements BlockHandler {
 
-    private static final NamespaceID SIGN = NamespaceID.from("minecraft:sign");
+    private static final Key SIGN_KEY = Key.key("minecraft:sign");
 
     private static final List<Tag<?>> SIGN_TAGS = List.of(
             Tag.Byte("GlowingText"),
@@ -29,6 +30,7 @@ public class SignHandler implements BlockHandler {
 
     /**
      * Returns all tags which are needed for the block.
+     *
      * @return the list with the tags
      */
     @Override
@@ -36,12 +38,8 @@ public class SignHandler implements BlockHandler {
         return SIGN_TAGS;
     }
 
-    /**
-     * Returns the {@link NamespaceID} for the block.
-     * @return the given namespace
-     */
     @Override
-    public @NotNull NamespaceID getNamespaceId() {
-        return SIGN;
+    public @NotNull Key getKey() {
+        return SIGN_KEY;
     }
 }

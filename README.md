@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/github/license/theEvilReaper/Canis?style=for-the-badge&color=b22234c)](../LICENSE)
 
-The fundamental objective of this project is to develop multiple implementations of `BlockHandler` for the Microtus
+The fundamental goal of this project is to develop multiple implementations of `BlockHandler` for the Microtus
 project, which is built on the Minestom framework. The specific functionalities provided by the pre-implemented handlers
 are contingent upon the requirements of the application. For instance, one implementation may permit only read access to
 block data, while another may allow for both reading and modifying this data. It is important to note that this project
@@ -10,8 +10,8 @@ does not aim to replicate the vanilla mechanics of Minecraft; rather, it serves 
 reading from blocks, particularly in the context of mini-games.
 
 > [!IMPORTANT]
-> Due to other projects taking priority, this project may look like it not being maintained.
-> However every pull request is welcome to enhance the functionality of this project.
+> Due to other projects taking priority, this project may look like it is not being maintained.
+> However, every pull request is welcome to enhance the functionality of this project.
 
 ## Usage
 
@@ -26,7 +26,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.theEvilReaper:Canis:master-SNAPSHOT")
+    implementation("net.theevilreaper:canis:<version>
 }
 ```
 

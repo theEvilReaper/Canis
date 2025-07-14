@@ -3,7 +3,7 @@ plugins {
     `maven-publish`
 }
 
-group = "net.theevilreaper.canis"
+group = "net.theevilreaper"
 version = "1.0.0-SNAPSHOT"
 
 java {
