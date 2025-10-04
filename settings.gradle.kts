@@ -3,7 +3,7 @@ rootProject.name = "Canis"
 dependencyResolutionManagement {
     versionCatalogs {
         create("libs") {
-            version("minestom", "2025.09.13-1.21.8")
+            version("minestom", "2025.10.04-1.21.8")
             version("junit", "6.0.0")
 
             library("minestom","net.minestom", "minestom").versionRef("minestom")
